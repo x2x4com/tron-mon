@@ -107,19 +107,3 @@ tmp/
 
 .idea
 
-# project code
-docker/api/otcmaker.com
-docker/api/src
-docker/chat/otc-chat
-docker/chat/src
-docker/static/otc-static
-docker/static/src
-docker/static/public
-
-# no upload secret dir
-k8s/secret
-k8s/autobot/secret
-
-
-# backups
-backups/
