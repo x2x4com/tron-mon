@@ -135,7 +135,7 @@ def check_node(n):
     log.debug("last block %s" % last_block)
     if last_block > 0:
         d = stats_structs.copy()
-        log.info("[%s] save block %d", (n, last_block))
+        log.info("[%s] save block %d" % (n, last_block))
         d['block']['last'] = last_block
         # todo 多少块不同步，强制重启
         # if stats['block']['count'] > 100:
