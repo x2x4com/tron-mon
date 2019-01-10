@@ -215,7 +215,7 @@ def find_pid_by_port(port: int):
     find_all = port_regex.findall(rt)
     log.debug("find port all %s" % find_all)
     if len(find_all) > 0:
-        return find_all[0]
+        return int(find_all[0])
     return -1
 
 
