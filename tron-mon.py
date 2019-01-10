@@ -113,6 +113,7 @@ def run():
 
 
 def check_node(n):
+    last_block = 0
     start_node = False
     has_port_http = False
     # has_port_rpc = False
@@ -131,7 +132,8 @@ def check_node(n):
         # 进程存在，检查一下端口是否在
         has_pid = True
     log.debug("get last block")
-    last_block = get_last_block('http://127.0.0.1:%s%s' % (node_info['http'], node_info['api_get_now_block']))
+    if has_port_http:
+        last_block = get_last_block('http://127.0.0.1:%s%s' % (node_info['http'], node_info['api_get_now_block']))
     log.debug("last block %s" % last_block)
     if last_block > 0:
         d = stats_structs.copy()
