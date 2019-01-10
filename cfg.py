@@ -12,7 +12,8 @@ node = {
         'stop_signal': 15,
         'http': 8500,
         'rpc': 58500,
-        'stats': '/data/tron/mon/full-runtime.info'
+        'stats': '/data/tron/mon/full-runtime.info',
+        'release_name': 'FullNode.jar'
     },
     "solidity": {
         "java_opts": "-Xmx6g -XX:+HeapDumpOnOutOfMemoryError",
@@ -24,7 +25,8 @@ node = {
         'stop_signal': 15,
         'http': 8600,
         'rpc': 58600,
-        'stats': '/data/tron/mon/solidity-runtime.info'
+        'stats': '/data/tron/mon/solidity-runtime.info',
+        'release_name': 'SolidityNode.jar'
     },
 }
 
@@ -34,3 +36,5 @@ thread_timeout = 180
 kill_try = 10
 kill_wait = 6
 console_log = False
+java_tron_release = "https://api.github.com/repos/tronprotocol/java-tron/releases"
+bin_location = "/data/tron/update"
