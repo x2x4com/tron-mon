@@ -66,7 +66,7 @@ def must_existed(t: str, w: bool=False):
 
 
 def save_stats(f: str, d: dict):
-    with open(f, 'rw') as fd:
+    with open(f, 'w') as fd:
         json.dump(fd, d)
 
 
