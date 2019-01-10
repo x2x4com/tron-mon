@@ -39,7 +39,8 @@ stats_structs = {
     "pid": -1,
     "block": {
         "last": 0,
-        "count": 0
+        "count": 0,
+        "tron_api_last": 0
     }
 }
 
