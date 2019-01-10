@@ -246,7 +246,7 @@ def check_port(port: int):
 
 
 def check_pid(pid: int):
-    log.debug("Check pid %d" % pid)
+    log.debug("Check pid %s" % pid)
     return psutil.pid_exists(pid)
 
 
