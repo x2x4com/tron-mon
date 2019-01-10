@@ -67,13 +67,13 @@ def must_existed(t: str, w: bool=False):
 
 def save_stats(f: str, d: dict):
     with open(f, 'w') as fd:
-        json.dump(fd, d)
+        fd.write(json.dumps(d))
 
 
 def load_stats(f: str):
     if is_existed(f):
         with open(f, 'r') as fd:
-            return json.load(fd)
+            return json.loads(fd.read())
     return stats_structs
 
 
