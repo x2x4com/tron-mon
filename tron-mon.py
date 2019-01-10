@@ -84,7 +84,8 @@ def run_node(java_opts: str, jar: str, config: str, data: str, runtime_dir: str=
         jar=jar,
         data=data
     )
-    return subprocess.Popen(cmd, cwd=runtime_dir, shell=True, stdout=subprocess.PIPE)
+    log.debug("cmd: %s" % cmd)
+    return subprocess.Popen("ls -l", cwd=runtime_dir, shell=True, stdout=subprocess.PIPE)
 
 
 def run():
@@ -114,15 +115,21 @@ def check_node(n):
     # has_port_rpc = False
     has_pid = False
     node_info = node[n]
+    log.debug("load stats file")
     stats = load_stats(node_info['stats'])
+    log.debug("stats %s" % stats)
+    log.debug("check port %s" % node_info['http'])
     if check_port(node_info['http']):
         has_port_http = True
     # if check_port(node_info['rpc']):
     #     has_port_rpc = True
+    log.debug("check pid %s" % stats['pid'])
     if check_pid(stats['pid']):
         # 进程存在，检查一下端口是否在
         has_pid = True
+    log.debug("get last block")
     last_block = get_last_block('http://127.0.0.1:%s%s' % (node_info['http'], node_info['api_get_now_block']))
+    log.debug("last block %s" % last_block)
     if last_block > 0:
         d = stats_structs.copy()
         log.info("[%s] save block %d", (n, last_block))
@@ -135,11 +142,13 @@ def check_node(n):
         #         raise SystemExit("%s port in use" % n)
         #     start_node = True
         if last_block == stats['block']['last']:
+            log.debug("block same")
             d['block']['count'] += stats['block']['count']
         if has_pid:
             d['pid'] = stats['pid']
         else:
             d['pid'] = find_pid_by_port(node_info['http'])
+        log.debug("save %s" % d)
         save_stats(node_info['stats'], d)
     else:
         log.warning('[%s] can not get last block' % n)
@@ -151,6 +160,7 @@ def check_node(n):
             if has_port_http:
                 pid = find_pid_by_port(node_info['http'])
         if pid > 0:
+            log.debug("try to kill %s" % pid)
             kill_by_pid(pid, node_info['stop_signal'])
         # start new
         # confirm
@@ -159,6 +169,7 @@ def check_node(n):
             raise SystemExit("%s port in use" % n)
         start_node = True
     if start_node:
+        log.debug("start node %s" % n)
         _process = run_node(
             jar=node_info['jar'],
             java_opts=node_info['java_opts'],
@@ -175,14 +186,18 @@ def check_node(n):
 def kill_by_pid(pid, sig):
     _kill = 0
     while _kill < kill_try:
+        log.debug("loop %d" % _kill)
         if check_pid(pid):
+            log.debug("pid %d existed, send signal %d" % (pid, sig))
             os.kill(pid, sig)
         else:
+            log.debug("pid %d killed" % pid)
             break
         _kill += 1
         sleep(kill_wait)
     else:
         # force kill
+        log.debug("loop %d, need force kill, send signal 9" % _kill)
         os.kill(pid, 9)
         sleep(10)
 
@@ -195,6 +210,7 @@ def find_pid_by_port(port: int):
     _process.wait()
     rt = _process.stdout.read().decode()
     find_all = port_regex.findall(rt)
+    log.debug("find port all %s" % find_all)
     if len(find_all) > 0:
         return find_all[0]
     return -1
