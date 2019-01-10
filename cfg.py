@@ -29,7 +29,7 @@ node = {
 }
 
 tron_api = "https://api.trongrid.io"
-log_file = '/tmp/mon.log'
+log_file = '/data/tron/mon/runtime.log'
 thread_timeout = 180
 kill_try = 10
 kill_wait = 6
