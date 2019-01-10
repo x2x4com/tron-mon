@@ -72,8 +72,11 @@ def save_stats(f: str, d: dict):
 
 def load_stats(f: str):
     if is_existed(f):
-        with open(f, 'r') as fd:
-            return json.loads(fd.read())
+        try:
+            with open(f, 'r') as fd:
+                return json.loads(fd.read())
+        except json.JSONDecodeError:
+            log.debug("can not load stats file %s" % f)
     return stats_structs
 
 
