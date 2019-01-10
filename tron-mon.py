@@ -88,7 +88,7 @@ def run_node(java_opts: str, jar: str, config: str, data: str, runtime_dir: str=
         data=data
     )
     log.debug("cmd: %s" % cmd)
-    return subprocess.Popen("ls -l", cwd=runtime_dir, shell=True, stdout=subprocess.PIPE)
+    return subprocess.Popen(cmd, cwd=runtime_dir, shell=True, stdout=subprocess.PIPE)
 
 
 def run():
