@@ -33,3 +33,4 @@ log_file = '/tmp/mon.log'
 thread_timeout = 180
 kill_try = 10
 kill_wait = 6
+console_log = False

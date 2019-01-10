@@ -30,7 +30,7 @@ import multiprocessing as mp
 import socket
 import requests
 import re
-from cfg import node, log_file, thread_timeout, kill_try, kill_wait
+from cfg import node, log_file, thread_timeout, kill_try, kill_wait, console_log
 from time import time, sleep
 import log
 
@@ -259,7 +259,7 @@ def main():
             log_level = 'DEBUG'
     else:
         log_level = os.environ.get("TRON-MON-LOG", "INFO")
-    log.set_logger(filename=log_file, level=log_level, console=True)
+    log.set_logger(filename=log_file, level=log_level, console=console_log)
     check_cfg()
     run()
 
