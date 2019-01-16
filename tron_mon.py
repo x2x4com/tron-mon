@@ -146,6 +146,7 @@ def check_node(n):
                 log.error("%s port in use" % n)
                 raise SystemExit("%s port in use" % n)
             start_node = True
+        log.debug("last: %s, save: %s" % (last_block, stats['block']['last']))
         if last_block == stats['block']['last']:
             log.debug("block same")
             d['block']['count'] += stats['block']['count']
