@@ -12,7 +12,7 @@ The directory structure in the configuration file is set according to [tron-cli]
 ## Introduction
 1. tron_mon.py
    
-   This script is used to monitor whether the tron's java process is lost, and the block height is growing normally.
+   This script is used to monitor whether the tron's java process is lost, or the block height is growing unusual.
 
 2. tron_check_update.py
 
