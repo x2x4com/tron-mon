@@ -254,12 +254,18 @@ def check_pid(pid: int):
 
 def main():
     log_level = 'INFO'
+    _console_log = console_log
     if len(sys.argv) > 1:
         if sys.argv[1] in ['d', 'debug', 'DEBUG']:
             log_level = 'DEBUG'
+        try:
+            if sys.argv[2] in ['c', 'console']:
+                _console_log = True
+        except IndexError:
+            pass
     else:
         log_level = os.environ.get("TRON-MON-LOG", "INFO")
-    log.set_logger(filename=log_file, level=log_level, console=console_log)
+    log.set_logger(filename=log_file, level=log_level, console=_console_log)
     check_cfg()
     run()
 
