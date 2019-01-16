@@ -30,7 +30,7 @@ import multiprocessing as mp
 import socket
 import requests
 import re
-from cfg import node, log_file, thread_timeout, kill_try, kill_wait, console_log
+from cfg import node, log_file, thread_timeout, kill_try, kill_wait, console_log, max_freeze_block_count
 from time import time, sleep
 import log
 
@@ -140,13 +140,12 @@ def check_node(n):
         d = stats_structs.copy()
         log.info("[%s] save block %d" % (n, last_block))
         d['block']['last'] = last_block
-        # todo 多少块不同步，强制重启
-        # if stats['block']['count'] > 100:
-        #     kill_by_pid(stats['pid'], node_info['stop_signal'])
-        #     if any([check_port(node_info['http']), check_port(node_info['rpc'])]):
-        #         log.error("%s port in use" % n)
-        #         raise SystemExit("%s port in use" % n)
-        #     start_node = True
+        if stats['block']['count'] > max_freeze_block_count:
+            kill_by_pid(stats['pid'], node_info['stop_signal'])
+            if any([check_port(node_info['http']), check_port(node_info['rpc'])]):
+                log.error("%s port in use" % n)
+                raise SystemExit("%s port in use" % n)
+            start_node = True
         if last_block == stats['block']['last']:
             log.debug("block same")
             d['block']['count'] += stats['block']['count']

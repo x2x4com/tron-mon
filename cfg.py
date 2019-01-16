@@ -38,3 +38,4 @@ kill_wait = 6
 console_log = False
 java_tron_release = "https://api.github.com/repos/tronprotocol/java-tron/releases"
 bin_location = "/data/tron/update"
+max_freeze_block_count = 100
