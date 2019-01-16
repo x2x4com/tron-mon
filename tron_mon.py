@@ -149,7 +149,8 @@ def check_node(n):
         log.debug("last: %s, save: %s" % (last_block, stats['block']['last']))
         if last_block == stats['block']['last']:
             log.debug("block same")
-            d['block']['count'] += stats['block']['count']
+            d['block']['count'] = stats['block']['count'] + 1
+            log.debug('new count: %s' % d['block']['count'])
         if has_pid:
             d['pid'] = stats['pid']
         else:
