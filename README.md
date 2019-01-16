@@ -63,40 +63,39 @@ The directory structure in the configuration file is set according to [tron-cli]
    /data/tron/update/3.2.4/SolidityNode.jar => /data/tron/tron_nodes/soliditynode/solidity.jar
    ```
    ```bash
-   python3 tron_mon.py d
-   ```
-   
-   Nothing return is normal, you need check logfile
-   ```bash
-   2019-01-16 06:25:41,376 [DEBUG] tron_mon.py[line:49] Check cfg
-   2019-01-16 06:25:41,376 [DEBUG] tron_mon.py[line:96] Start running...
-   2019-01-16 06:25:41,376 [DEBUG] tron_mon.py[line:100] Check full
-   2019-01-16 06:25:41,381 [DEBUG] tron_mon.py[line:100] Check solidity
-   2019-01-16 06:25:41,382 [DEBUG] tron_mon.py[line:123] load stats file
-   2019-01-16 06:25:41,382 [DEBUG] tron_mon.py[line:125] stats {'pid': 2611, 'block': {'last': 5796894, 'count': 0, 'tron_api_last': 0}}
-   2019-01-16 06:25:41,383 [DEBUG] tron_mon.py[line:126] check port 8500
-   2019-01-16 06:25:41,383 [DEBUG] tron_mon.py[line:243] Check port 8500
-   2019-01-16 06:25:41,383 [DEBUG] tron_mon.py[line:131] check pid 2611
-   2019-01-16 06:25:41,383 [DEBUG] tron_mon.py[line:252] Check pid 2611
-   2019-01-16 06:25:41,384 [DEBUG] tron_mon.py[line:135] get last block
-   2019-01-16 06:25:41,384 [DEBUG] tron_mon.py[line:123] load stats file
-   2019-01-16 06:25:41,385 [DEBUG] tron_mon.py[line:125] stats {'pid': 2612, 'block': {'last': 5792843, 'count': 0, 'tron_api_last': 0}}
-   2019-01-16 06:25:41,385 [DEBUG] tron_mon.py[line:126] check port 8600
-   2019-01-16 06:25:41,385 [DEBUG] tron_mon.py[line:243] Check port 8600
-   2019-01-16 06:25:41,386 [DEBUG] tron_mon.py[line:131] check pid 2612
-   2019-01-16 06:25:41,386 [DEBUG] tron_mon.py[line:252] Check pid 2612
-   2019-01-16 06:25:41,386 [DEBUG] tron_mon.py[line:135] get last block2019-01-16 06:25:41,392 [DEBUG] connectionpool.py[line:205] Starting new HTTP connection (1): 127.0.0.1:8600
-   2019-01-16 06:25:41,389 [DEBUG] connectionpool.py[line:205] Starting new HTTP connection (1): 127.0.0.1:8500
-   2019-01-16 06:25:41,412 [DEBUG] connectionpool.py[line:393] http://127.0.0.1:8600 "GET /walletsolidity/getnowblock HTTP/1.1" 200 None
-   2019-01-16 06:25:41,415 [DEBUG] tron_mon.py[line:138] last block 5792843
-   2019-01-16 06:25:41,415 [INFO] tron_mon.py[line:141] [solidity] save block 5792843
-   2019-01-16 06:25:41,415 [DEBUG] tron_mon.py[line:151] block same
-   2019-01-16 06:25:41,415 [DEBUG] tron_mon.py[line:157] save {'pid': 2612, 'block': {'last': 5792843, 'count': 0, 'tron_api_last': 0}}
-   2019-01-16 06:25:41,413 [DEBUG] connectionpool.py[line:393] http://127.0.0.1:8500 "GET /wallet/getnowblock HTTP/1.1" 200 None
-   2019-01-16 06:25:41,416 [DEBUG] tron_mon.py[line:138] last block 5796894
-   2019-01-16 06:25:41,416 [INFO] tron_mon.py[line:141] [full] save block 5796894
-   2019-01-16 06:25:41,416 [DEBUG] tron_mon.py[line:151] block same
-   2019-01-16 06:25:41,417 [DEBUG] tron_mon.py[line:157] save {'pid': 2611, 'block': {'last': 5796894, 'count': 0, 'tron_api_last': 0}}
+   $ python3 tron_mon.py d c
+   2019-01-16 07:03:17,439 [DEBUG] tron_mon.py[line:49] Check cfg
+   2019-01-16 07:03:17,439 [DEBUG] tron_mon.py[line:96] Start running...
+   2019-01-16 07:03:17,439 [DEBUG] tron_mon.py[line:100] Check full
+   2019-01-16 07:03:17,441 [DEBUG] tron_mon.py[line:100] Check solidity
+   2019-01-16 07:03:17,443 [DEBUG] tron_mon.py[line:123] load stats file
+   2019-01-16 07:03:17,444 [DEBUG] tron_mon.py[line:125] stats {'pid': 2611, 'block': {'last': 5796907, 'count': 6, 'tron_api_last': 0}}
+   2019-01-16 07:03:17,444 [DEBUG] tron_mon.py[line:126] check port 8500
+   2019-01-16 07:03:17,444 [DEBUG] tron_mon.py[line:244] Check port 8500
+   2019-01-16 07:03:17,445 [DEBUG] tron_mon.py[line:131] check pid 2611
+   2019-01-16 07:03:17,445 [DEBUG] tron_mon.py[line:253] Check pid 2611
+   2019-01-16 07:03:17,445 [DEBUG] tron_mon.py[line:135] get last block
+   2019-01-16 07:03:17,445 [DEBUG] tron_mon.py[line:123] load stats file
+   2019-01-16 07:03:17,446 [DEBUG] tron_mon.py[line:125] stats {'pid': 2612, 'block': {'last': 5792843, 'count': 12, 'tron_api_last': 0}}
+   2019-01-16 07:03:17,447 [DEBUG] tron_mon.py[line:126] check port 8600
+   2019-01-16 07:03:17,447 [DEBUG] tron_mon.py[line:244] Check port 8600
+   2019-01-16 07:03:17,447 [DEBUG] tron_mon.py[line:131] check pid 2612
+   2019-01-16 07:03:17,448 [DEBUG] tron_mon.py[line:253] Check pid 2612
+   2019-01-16 07:03:17,448 [DEBUG] tron_mon.py[line:135] get last block
+   2019-01-16 07:03:17,452 [DEBUG] connectionpool.py[line:205] Starting new HTTP connection (1): 127.0.0.1:8500
+   2019-01-16 07:03:17,453 [DEBUG] connectionpool.py[line:205] Starting new HTTP connection (1): 127.0.0.1:8600
+   2019-01-16 07:03:17,463 [DEBUG] connectionpool.py[line:393] http://127.0.0.1:8500 "GET /wallet/getnowblock HTTP/1.1" 200 None
+   2019-01-16 07:03:17,464 [DEBUG] connectionpool.py[line:393] http://127.0.0.1:8600 "GET /walletsolidity/getnowblock HTTP/1.1" 200 None
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:138] last block 5796908
+   2019-01-16 07:03:17,467 [INFO] tron_mon.py[line:141] [full] save block 5796908
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:138] last block 5792843
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:149] last: 5796908, save: 5796907
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:158] save {'pid': 2611, 'block': {'last': 5796908, 'count': 0, 'tron_api_last': 0}}
+   2019-01-16 07:03:17,467 [INFO] tron_mon.py[line:141] [solidity] save block 5792843
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:149] last: 5792843, save: 5792843
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:151] block same
+   2019-01-16 07:03:17,467 [DEBUG] tron_mon.py[line:153] new count: 13
+   2019-01-16 07:03:17,468 [DEBUG] tron_mon.py[line:158] save {'pid': 2612, 'block': {'last': 5792843, 'count': 13, 'tron_api_last': 0}}
 
    ``` 
    
