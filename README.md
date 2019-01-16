@@ -16,7 +16,7 @@ The directory structure in the configuration file is set according to [tron-cli]
 
 2. tron_check_update.py
 
-   This script will monitor the java-tron release page and automatically download the latest release and make a soft link.
+   This script will monitor the [java-tron release page](https://github.com/tronprotocol/java-tron/releases) and automatically download the latest release and make a soft link.
 
 ## How to use
 1. Create a python virtual environment
