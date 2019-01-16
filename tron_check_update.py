@@ -99,15 +99,24 @@ def make_link(f, t):
 
 def read_md5_file(f):
     must_existed(f)
+    is_linux = True
     o = {}
-    find = re.compile('^(\w+)\s+(.*)')
+    md5_linux = re.compile('^(\w+)\s+(.*)')
+    md5_mac = re.compile('^MD5\s+\(([a-zA-Z0-9\-_\.]+)\)\s+=\s+(.*)')
     with open(f, 'r') as fd:
         s = fd.read()
     a = s.split("\n")
     for _a in a:
-        _s = find.search(_a)
+        if _a[:3] == "MD5":
+            is_linux = False
+            _s = md5_mac.search(_a)
+        else:
+            _s = md5_linux.search(_a)
         if _s:
-            o[_s.groups()[1]] = _s.groups()[0]
+            if is_linux:
+                o[_s.groups()[1]] = _s.groups()[0]
+            else:
+                o[_s.groups()[0]] = _s.groups()[1]
     return o
 
 
